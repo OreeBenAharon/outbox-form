@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {MatInputModule} from '@angular/material/input';
 import {MatInputModule} from '@angular/material/input';
 import { FirstComponent } from './components/first/first.component';
+import { EmailerComponent } from './components/emailer/emailer.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FirstComponent } from './components/first/first.component';
     AppComponent,
     MainComponent,
     HeaderComponent,
-    FirstComponent
+    FirstComponent,
+    EmailerComponent
   ],
   imports: [
     BrowserModule,

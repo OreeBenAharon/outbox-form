@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmailerComponent } from './components/emailer/emailer.component';
 import { FirstComponent } from './components/first/first.component';
 import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {path: "reg", component: FirstComponent},
-  {path: "final/:id", component: MainComponent}
+  {path: "final/:id", component: MainComponent},
+  {path: "*", pathMatch:"full", component: EmailerComponent}
 ];
 
 @NgModule({
