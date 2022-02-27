@@ -4,8 +4,8 @@ import { FirstComponent } from './components/first/first.component';
 import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
-  {path: "/register-hachamama/first", component: FirstComponent},
-  {path: "/register-hachamama/:id", component: MainComponent}
+  {path: "reg", component: FirstComponent},
+  {path: "final/:id", component: MainComponent}
 ];
 
 @NgModule({
