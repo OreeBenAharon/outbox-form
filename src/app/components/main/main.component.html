@@ -1,0 +1,48 @@
+<div class="main">
+    <div class="form-container">
+
+        <input type="file" class="filetaker" name="filetaker">
+        <input type="file" class="pictaker" name="pictaker">
+        <button class="sendfile" (click)="sendfile()" >שליחה</button>
+
+        <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="send2()">>
+          <mat-form-field class="example-full-width" formControlName="nameCtrl" appearance="fill">
+            <mat-label>שם מלא</mat-label>
+            <input matInput placeholder="ישראל ישראלי" value="">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" formControlName="phoneCtrl" appearance="fill">
+            <mat-label>טלפון</mat-label>
+            <input matInput placeholder="050-00000000" value="">
+          </mat-form-field>
+          <mat-form-field class="example-full-width" formControlName="emailCtrl" appearance="fill">
+            <mat-label>מייל</mat-label>
+            <input matInput placeholder="a@gmail.com" value="">
+          </mat-form-field>
+
+        </form>
+<!--          
+    <mat-form-field>
+        <ngx-mat-file-input formControlName="requiredfilePicCtrl" placeholder="Required input" valuePlaceholder="לא נבחר קובץ" required></ngx-mat-file-input>
+        <mat-icon matSuffix>folder</mat-icon>
+        <mat-error *ngIf="regFormGroup?.get('requiredfilePicCtrl')?.hasError('required')">
+            נא לבחור תמונה
+        </mat-error>
+        <mat-error *ngIf="regFormGroup?.get('requiredfilePicCtrl')?.hasError('maxContentSize')">
+            התמונה מוגבלת ל-5 מגה. }}
+        </mat-error>
+    </mat-form-field>
+        
+    <mat-form-field>
+        <ngx-mat-file-input formControlName="requiredfilePicCtrl" placeholder="Required input" valuePlaceholder="לא נבחר קובץ" required></ngx-mat-file-input>
+
+          <mat-icon matSuffix>folder</mat-icon>
+        <mat-error *ngIf="regFormGroup?.get('requiredfileCtrl')?.hasError('required')">
+          נא לבחור תיק עבודות
+        </mat-error>
+        <mat-error *ngIf="regFormGroup?.get('requiredfileCtrl')?.hasError('maxContentSize')">
+          תיק העבודות מוגבל ל-5 מגה. }}
+        </mat-error>
+      </mat-form-field> -->
+  
+    </div>
+</div>
