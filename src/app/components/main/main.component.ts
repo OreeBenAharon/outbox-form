@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
 
 	}
 	
-	public started = async ()=>{
+	public startedFilling = async ()=>{
 		if ( this._d.userStatus < 25 && this._d.userStatus !== 0 ) {
 			try{            
 				let res = await fetch(`https://api.powerlink.co.il/api/record/1/${this._d.userId}`,{
@@ -73,7 +73,7 @@ export class MainComponent implements OnInit {
 		
 	}
 
-	send2 = async ()=> {
+	sendFinal = async ()=> {
 		try{            
 		let res = await fetch(`https://api.powerlink.co.il/api/record/1/${this._d.userId}`,{
 		method: "PUT",
@@ -119,32 +119,7 @@ export class MainComponent implements OnInit {
 			console.log(err);
 			}
 	}
-  
-	send = async ()=> {
-		try{            
-		const res = await fetch('https://api.powerlink.co.il/api/record/1',{
-		method: "POST",
-		headers:{
-				"Content-Type": "application/json",
-				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
-		},
-		body: JSON.stringify({
-				accountname: this.regFormGroup?.controls.nameCtrl.value,
-				telephone1: this.regFormGroup?.controls.phoneCtrl.value,
-				emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
-				actionstatuscode:22
-				})
-		})
-		
-		const result = await res.json()
-		console.log(result);
-
-	}
-	catch(err){
-			console.log(err);
-			}
-	}
-  
+    
 	// readonly maxSize = 5242880;
 
 	public sendfile = async ()=>{
@@ -194,7 +169,6 @@ export class MainComponent implements OnInit {
 		}
 		return false
 	}
-	
 
 	ngOnInit(): void {
 		this._d.userId = this._ar.snapshot.paramMap.get('id')
@@ -217,9 +191,5 @@ export class MainComponent implements OnInit {
 		})
 		
 	}
-    
-		
-
 
 }
-

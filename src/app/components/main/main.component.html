@@ -5,7 +5,7 @@
         <input type="file" class="pictaker" name="pictaker">
         <button class="sendfile" (click)="sendfile()" >שליחה</button>
 
-        <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="send2()">>
+        <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="sendFinal()">>
           <mat-form-field class="example-full-width" formControlName="nameCtrl" appearance="fill">
             <mat-label>שם מלא</mat-label>
             <input matInput placeholder="ישראל ישראלי" value="">
@@ -18,7 +18,7 @@
             <mat-label>מייל</mat-label>
             <input matInput placeholder="a@gmail.com" value="">
           </mat-form-field>
-
+          <button type="submit">SEND</button>
         </form>
 <!--          
     <mat-form-field>

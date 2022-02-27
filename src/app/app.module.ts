@@ -11,13 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MaterialFileInputModule } from 'ngx-material-file-input';
 // import {MatInputModule} from '@angular/material/input';
 import {MatInputModule} from '@angular/material/input';
+import { FirstComponent } from './components/first/first.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    FirstComponent
   ],
   imports: [
     BrowserModule,
