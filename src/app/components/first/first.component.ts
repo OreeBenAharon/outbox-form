@@ -42,9 +42,9 @@ export class FirstComponent implements OnInit {
 
   ngOnInit(): void {
     	this.regFormGroup = this._fb.group({
-			nameCtrl: ['', Validators.required],
-			phoneCtrl: ['', Validators.required],
-			emailCtrl: ['', Validators.required],
+        nameCtrl: ['', Validators.required],
+        phoneCtrl: ['', Validators.required],
+        emailCtrl: ['', Validators.required],
 			// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
 			// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
 		})

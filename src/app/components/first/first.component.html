@@ -1,18 +1,18 @@
 <div class="first-container">
     <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="sendFirst()"> 
-        <mat-form-field class="example-full-width" formControlName="nameCtrl" appearance="fill">
+        <mat-form-field class="example-full-width"  appearance="fill">
           <mat-label>NAME:</mat-label>
-          <input matInput placeholder="ישראל ישראלי" value="Sushi">
+          <input matInput placeholder="ישראל ישראלי" value="avi" formControlName="nameCtrl">
         </mat-form-field>
       
-        <mat-form-field class="example-full-width" formControlName="phoneCtrl" appearance="fill">
+        <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>PHONE:</mat-label>
-          <input matInput placeholder="050-......." value="Sushi">
+          <input matInput placeholder="050-......." value="Sushi" formControlName="phoneCtrl">
         </mat-form-field>
       
-        <mat-form-field class="example-full-width" formControlName="emailCtrl" appearance="fill">
+        <mat-form-field class="example-full-width"  appearance="fill">
           <mat-label>EMAIL:</mat-label>
-          <textarea matInput placeholder="avi@gmail.com"></textarea>
+          <textarea matInput formControlName="emailCtrl" placeholder="avi@gmail.com"></textarea>
         </mat-form-field>
         <button type="submit">SEND</button>
       </form>

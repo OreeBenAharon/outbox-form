@@ -7,7 +7,8 @@ import { MainComponent } from './components/main/main.component';
 const routes: Routes = [
   {path: "reg", component: FirstComponent},
   {path: "final/:id", component: MainComponent},
-  {path: "*", pathMatch:"full", component: EmailerComponent}
+  // {path: "", component: EmailerComponent},
+  // {path: "**", pathMatch:"full", component: EmailerComponent}
 ];
 
 @NgModule({
