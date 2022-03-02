@@ -1,35 +1,36 @@
 <div class="first-container">
+
     <div class="title-text">
         <p class="title">תכנית חממת המעצבים, מחזור 2022</p>
         <br>
         <p class="text-medium">מוזמנים להשאיר פרטים על מנת שנול לעדכן אתכם בתוכניות ומזימות נוספות שלנו :)</p>
         <br>
-        <p class="text">לשאלות נוספות מוזמנות/ים לכתוב למנהלת חממת המעצבים ענת ציגלמן <span class="text-mail">terminal@outbox.org.il</span></p>
+        <p class="text-premail">לשאלות נוספות מוזמנות/ים לכתוב למנהלת חממת המעצבים ענת ציגלמן <span class="text-mail">terminal@outbox.org.il</span></p>
     </div>
+
     <div class="form-first">
         <p class="form-title">רוצים להמריא? <span class="form-title-bolt">הירשמו כאן!</span></p>
-        <form class="form-itself" [formGroup]="regFormGroup" (ngSubmit)="sendFirst()">     
-            <mat-form-field appearance="fill">
-                <mat-label class="form-label">שם מלא</mat-label>
-                <input matInput formControlName="nameCtrl">
-            </mat-form-field>
-            
-            <mat-form-field appearance="fill">
-                <mat-label class="form-label">טלפון</mat-label>
-                <input class="form-input" matInput formControlName="phoneCtrl">
-            </mat-form-field>
+        <form  [formGroup]="regFormGroup" (ngSubmit)="sendFirst()">     
+            <div class="form-itself">
+                
+                <mat-form-field appearance="fill">
+                    <input class="form-input"  placeholder="שם מלא" formControlName="nameCtrl">
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill">
+                    <input class="form-input"  placeholder="טלפון" formControlName="phoneCtrl">
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <input  class="form-input"  placeholder="אימייל" formControlName="emailCtrl">
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill">
+                    <textarea  class="form-input" placeholder="כמה מילים עליך וכיצד נוכל לעזור?" formControlName="needsCtrl"></textarea>
+                </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label class="form-label">אימייל</mat-label>
-                <input matInput  class="input-text" formControlName="emailCtrl">
-            </mat-form-field>
-
-            <mat-form-field appearance="fill">
-                <mat-label class="form-label">כמה מילים עליך וכיצד נוכל לעזור?</mat-label>
-                <textarea matInput class="input-text" formControlName="needsCtrl"></textarea>
-            </mat-form-field>
-
-            <button type="submit" class="btn-send">שליחה</button>
+                <button mat-stroked-button type="submit" class="btn-send">שליחה</button>
+            </div>
         </form>
 
     </div>

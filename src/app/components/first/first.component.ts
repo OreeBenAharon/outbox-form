@@ -33,20 +33,21 @@ export class FirstComponent implements OnInit {
 		})
 		const result = await res.json()
     
-    result.data.Record.accountid
-		res = await fetch('https://api.powerlink.co.il/api/record/1',{
-		method: "POST",
-		headers:{
-				"Content-Type": "application/json",
-				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
-		},
-		body: JSON.stringify({
-				accountname: this.regFormGroup?.controls.nameCtrl.value,
-				telephone1: this.regFormGroup?.controls.phoneCtrl.value,
-				emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
-				actionstatuscode:22
-				})
-		})
+    // result.data.Record.accountid
+		// res = await fetch('https://api.powerlink.co.il/api/record/1',{
+		// method: "POST",
+		// headers:{
+		// 		"Content-Type": "application/json",
+		// 		tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+		// },
+		// body: JSON.stringify({
+		// 		accountname: this.regFormGroup?.controls.nameCtrl.value,
+		// 		telephone1: this.regFormGroup?.controls.phoneCtrl.value,
+		// 		emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
+		// 		needs: this.regFormGroup?.controls.needsCtrl.value,
+		// 		actionstatuscode:22
+		// 		})
+		// })
 		console.log(result);
 
 	}
