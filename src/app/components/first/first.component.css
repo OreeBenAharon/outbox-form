@@ -1,0 +1,102 @@
+.first-container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-text{
+    
+}
+
+.title{
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+
+    color: #AD2702;
+}
+
+.text{
+    color: #074B72;
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #F25920;
+}
+
+.text-medium{
+    color: #074B72;
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.text-mail{
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    /* line-height: 16px; */
+    color: #F25920;
+}
+
+/* .form-first{
+
+} */
+
+.form-title{
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    /* line-height: 35px; */
+    text-align: center;
+    color: #074B72;
+}
+
+.form-title-bolt{
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    /* line-height: 35px; */
+    text-align: center;
+    color: #074B72;
+}
+
+/* .form-itself{
+
+} */
+
+.form-label{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    /* line-height: 21px; */
+    text-align: right;
+
+    color: #797979;
+
+}
+
+.form-input{
+    background: #FFFFFF;
+    border: 2px solid #074B72;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-send{
+    background: #F25920;
+    border-radius: 10px;
+    color:#FFFFFF;
+    font-weight: bold;
+
+}

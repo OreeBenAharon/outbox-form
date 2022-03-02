@@ -17,7 +17,24 @@ export class FirstComponent implements OnInit {
 
   sendFirst = async ()=> {
 		try{            
-		const res = await fetch('https://api.powerlink.co.il/api/record/1',{
+		let res = await fetch('https://api.powerlink.co.il/api/record/1',{
+		method: "POST",
+		headers:{
+				"Content-Type": "application/json",
+				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+		},
+		body: JSON.stringify({
+				accountname: this.regFormGroup?.controls.nameCtrl.value,
+				telephone1: this.regFormGroup?.controls.phoneCtrl.value,
+				emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
+				needs: this.regFormGroup?.controls.needsCtrl.value,
+				actionstatuscode:22
+				})
+		})
+		const result = await res.json()
+    
+    result.data.Record.accountid
+		res = await fetch('https://api.powerlink.co.il/api/record/1',{
 		method: "POST",
 		headers:{
 				"Content-Type": "application/json",
@@ -30,8 +47,6 @@ export class FirstComponent implements OnInit {
 				actionstatuscode:22
 				})
 		})
-		
-		const result = await res.json()
 		console.log(result);
 
 	}
@@ -45,6 +60,7 @@ export class FirstComponent implements OnInit {
         nameCtrl: ['', Validators.required],
         phoneCtrl: ['', Validators.required],
         emailCtrl: ['', Validators.required],
+        needsCtrl: ['', Validators.required],
 			// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
 			// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
 		})
