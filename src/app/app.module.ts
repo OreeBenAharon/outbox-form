@@ -7,7 +7,8 @@ import { MainComponent } from './components/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 // import { MaterialFileInputModule } from 'ngx-material-file-input';
 // import {MatInputModule} from '@angular/material/input';
 import {MatInputModule} from '@angular/material/input';
@@ -28,7 +29,7 @@ import { EmailerComponent } from './components/emailer/emailer.component';
     ReactiveFormsModule,
     AppRoutingModule,
     MatInputModule,
-    // MatFormFieldModule,
+    MatFormFieldModule,
     // MaterialFileInputModule,
 
     // NgxMatFileInputModule,
