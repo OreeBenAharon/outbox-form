@@ -75,6 +75,7 @@
           "configurations": {
             "production": {
               "browserTarget": "hachamama:build:production"
+              
             },
             "development": {
               "browserTarget": "hachamama:build:development"
@@ -85,7 +86,9 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hachamama:build"
+            "browserTarget": "hachamama:build",
+            "proxyConfig": "src/proxy.conf.json"
+
           }
         },
         "test": {
