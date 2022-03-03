@@ -20,7 +20,8 @@ export class FirstComponent implements OnInit {
 		let res = await fetch('https://api.powerlink.co.il/api/record/1',{
 		method: "POST",
 		headers:{
-				"Content-Type": "application/json",
+				// "Content-Type": "application/json",
+        'Content-Type': 'application/x-www-form-urlencoded',
         "Access-Control-Allow-Origin": "",
         "Access-Control-Request-Method": "",
         "Access-Control-Allow-Headers":"*",
