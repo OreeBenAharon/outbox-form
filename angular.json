@@ -74,21 +74,25 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hachamama:build:production"
-              
+              "browserTarget": "hachamama:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
-              "browserTarget": "hachamama:build:development"
+              "browserTarget": "hachamama:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options":{
+            "browserTarget": "hachamama:build",
+            "proxyConfig": "src/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hachamama:build",
-            "proxyConfig": "src/proxy.conf.json"
-
+            "browserTarget": "hachamama:build"
+            
           }
         },
         "test": {

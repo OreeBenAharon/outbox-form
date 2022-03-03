@@ -1,6 +1,10 @@
 {
-	api {
-	"target": "https://api.powerlink.co.il/",
-	"secure": false
-	}
-}
+    "/reg/send": {
+      "target": "https://api.powerlink.co.il/api/record/1",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/reg/send": ""
+      }
+    }
+  }
