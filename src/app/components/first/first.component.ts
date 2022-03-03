@@ -21,6 +21,9 @@ export class FirstComponent implements OnInit {
 		method: "POST",
 		headers:{
 				"Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "",
+        "Access-Control-Request-Method": "",
+        "Access-Control-Allow-Headers":"*",
 				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
 		},
 		body: JSON.stringify({
