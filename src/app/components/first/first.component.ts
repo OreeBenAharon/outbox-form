@@ -17,7 +17,7 @@ export class FirstComponent implements OnInit {
 
   sendFirst = async ()=> {
 		try{            
-		let res = await fetch('https://hachamama.netlify.app/reg/send',{
+		let res = await fetch('reg/send',{
 		// let res = await fetch('https://api.powerlink.co.il/api/record/1',{
 		method: "POST",
 		headers:{

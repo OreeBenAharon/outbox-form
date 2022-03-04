@@ -1,7 +1,7 @@
 {
     "/reg/send": {
       "target": "https://api.powerlink.co.il/api/record/1",
-      "secure": true,
+      "secure": false,
       "changeOrigin": true,
       "pathRewrite": {
         "^/reg/send": ""
