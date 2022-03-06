@@ -14,6 +14,13 @@ export class FirstComponent implements OnInit {
   constructor(public _fb: FormBuilder,
               public _d: DataService) { }
 
+  isFilled = ()=>{
+	if (this.regFormGroup.controls.nameCtrl.valid &&
+		this.regFormGroup.controls.phoneCtrl.valid &&
+		this.regFormGroup.controls.emailCtrl.valid &&
+		this.regFormGroup.controls.needsCtrl.valid) return true
+	else return false
+  }
 
   sendFirst = async ()=> {
 		try{            
