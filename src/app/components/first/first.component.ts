@@ -47,10 +47,11 @@ export class FirstComponent implements OnInit {
 		console.log(result);
 
     // result.data.Record.accountid
-		res = await fetch('https://outbox-emailer.herokuapp.com/send',{
+		res = await fetch('email',{
 		method: "POST",
 		headers:{
 				"Content-Type": "application/json",
+				authorization: ""
 		},
 		body: JSON.stringify({
 				userId: result.data.Record.accountid,
