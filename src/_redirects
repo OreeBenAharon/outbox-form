@@ -1,2 +1,3 @@
 /reg/send  https://api.powerlink.co.il/api/record/1 200
+/email https://outbox-emailer.herokuapp.com/send 200
 /*  /index.html 200
