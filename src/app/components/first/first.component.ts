@@ -28,19 +28,20 @@ export class FirstComponent implements OnInit {
 		// let res = await fetch('https://api.powerlink.co.il/api/record/1',{
 		method: "POST",
 		headers:{
-			'content-type': 'application/json',
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-        "Access-Control-Allow-Origin": "",
-        "Access-Control-Request-Method": "",
-        "Access-Control-Allow-Headers":"*",
-				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+			"content-type": "application/json",
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+			"Access-Control-Allow-Origin": "",
+			"Access-Control-Request-Method": "",
+			"Access-Control-Allow-Headers":"*",
+			tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
 		},
 		body: JSON.stringify({
 				accountname: this.regFormGroup?.controls.nameCtrl.value,
 				telephone1: this.regFormGroup?.controls.phoneCtrl.value,
 				emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
 				needs: this.regFormGroup?.controls.needsCtrl.value,
-				actionstatuscode:29
+				actionstatuscode:29,
+				pcfsystemfield33:3
 				})
 		})
 		const result = await res.json()
@@ -57,6 +58,8 @@ export class FirstComponent implements OnInit {
 				userId: result.data.Record.accountid,
 				name: this.regFormGroup?.controls.nameCtrl.value,
 				email: this.regFormGroup?.controls.emailCtrl.value,
+				phone: this.regFormGroup?.controls.phoneCtrl.value,
+				needs: this.regFormGroup?.controls.needsCtrl.value,
 				})
 		})
 		const emailResults = await res.json()
@@ -72,7 +75,7 @@ export class FirstComponent implements OnInit {
 	}
 	catch(err){
 			console.log(err);
-			alert("oh no! registration failed!")
+			alert("oh man! registration failed!")
 
 			}
 	}
