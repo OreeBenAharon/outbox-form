@@ -61,9 +61,18 @@ export class FirstComponent implements OnInit {
 		const emailResults = await res.json()
 		console.log(emailResults);
 
+		if( emailResults.status === 200 ) {
+			alert("yay! you're in!")
+		} else {
+			alert("oh no! registration has problems!")
+
+		}
+
 	}
 	catch(err){
 			console.log(err);
+			alert("oh no! registration failed!")
+
 			}
 	}
 
