@@ -52,7 +52,7 @@ export class FirstComponent implements OnInit {
 		method: "POST",
 		headers:{
 				"content-type": "application/json",
-				authorization: ""
+				// authorization: ""
 		},
 		body: JSON.stringify({
 				userId: result.data.Record.accountid,
@@ -65,7 +65,7 @@ export class FirstComponent implements OnInit {
 		const emailResults = await res.json()
 		console.log(emailResults);
 
-		if( emailResults.status === 200 ) {
+		if( emailResults.success ) {
 			alert("yay! you're in!")
 		} else {
 			alert("oh no! registration has problems!")
