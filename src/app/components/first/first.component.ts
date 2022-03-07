@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import {MatDialog} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-first',
@@ -12,7 +14,10 @@ export class FirstComponent implements OnInit {
   public regFormGroup: FormGroup;
 
   constructor(public _fb: FormBuilder,
-              public _d: DataService) { }
+              public _d: DataService,
+			  public _r:Router,
+			  public dialog: MatDialog) { }
+
 
   isFilled = ()=>{
 	if (this.regFormGroup.controls.nameCtrl.valid &&
@@ -65,7 +70,7 @@ export class FirstComponent implements OnInit {
 		// const emailResults = await res.json()
 		// console.log(emailResults);
 		// console.log(emailResults.success);
-		
+
 		if( res.status === 200 ) {
 		// if( emailResults.status === 200 ) {
 			alert("yay! you're in!")
@@ -82,15 +87,44 @@ export class FirstComponent implements OnInit {
 			}
 	}
 
+  openDialog() {
+	this.dialog.open(Popup);
+	}
+
+
   ngOnInit(): void {
-    	this.regFormGroup = this._fb.group({
-        nameCtrl: ['', Validators.required],
-        phoneCtrl: ['', Validators.required],
-        emailCtrl: ['', Validators.required],
-        needsCtrl: ['', Validators.required],
-			// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
-			// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
-		})
+	this.regFormGroup = this._fb.group({
+	nameCtrl: ['', Validators.required],
+	phoneCtrl: ['', Validators.required],
+	emailCtrl: ['', Validators.required],
+	needsCtrl: ['', Validators.required],
+		// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
+		// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
+	})
   }
 
 }
+
+///   ******POPUP********
+
+@Component({
+	selector: 'popup',
+	templateUrl: 'popup.html',
+  })
+
+export class Popup {
+
+	constructor(public _r:Router,
+				public dialog: MatDialog) { }
+  goBack = ()=>{
+	this._r.navigateByUrl("http://outbox.org.il")
+
+  }
+}
+
+
+
+
+
+
+
