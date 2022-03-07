@@ -62,10 +62,12 @@ export class FirstComponent implements OnInit {
 				needs: this.regFormGroup?.controls.needsCtrl.value,
 				})
 		})
-		const emailResults = await res.json()
-		console.log(emailResults);
-
-		if( emailResults.success ) {
+		// const emailResults = await res.json()
+		// console.log(emailResults);
+		// console.log(emailResults.success);
+		
+		if( res.status === 200 ) {
+		// if( emailResults.status === 200 ) {
 			alert("yay! you're in!")
 		} else {
 			alert("oh no! registration has problems!")
