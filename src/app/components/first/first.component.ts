@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class FirstComponent implements OnInit {
 
   public regFormGroup: FormGroup;
-
+  public regError:any = {error: false, msg:""}
   constructor(public _fb: FormBuilder,
               public _d: DataService,
 			  public _r:Router,
@@ -28,13 +28,38 @@ export class FirstComponent implements OnInit {
   }
 
   sendFirst = async ()=> {
-		try{            
-		let res = await fetch('reg/send',{
+		try{           
+		 
+		let res = await fetch('reg/exist',{
+			method: "POST",
+			headers:{
+				"content-type": "application/json",
+				"Access-Control-Allow-Origin": "",
+				"Access-Control-Request-Method": "",
+				"Access-Control-Allow-Headers":"*",
+				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+			},
+			body: JSON.stringify({
+					objecttype: 1,
+					page_size: 500,
+					page_number: 1,
+					fields: "accountname,emailaddress1,telephone1",
+					query: `(emailaddress1 = ${this.regFormGroup?.controls.emailCtrl.value})`,
+					sort_by: "accountname",
+					sort_type: "desc"
+			})
+		})
+		let result = await res.json()
+		console.log(result);
+		if (result.data.Data.length > 0) {
+			this.regError = {error: true, msg: " כבר קיים במערכת חשבון עם הדואר האלקטרוני שהוזן."}
+		}
+
+		 res = await fetch('reg/send',{
 		// let res = await fetch('https://api.powerlink.co.il/api/record/1',{
 		method: "POST",
 		headers:{
 			"content-type": "application/json",
-			// 'Content-Type': 'application/x-www-form-urlencoded',
 			"Access-Control-Allow-Origin": "",
 			"Access-Control-Request-Method": "",
 			"Access-Control-Allow-Headers":"*",
@@ -49,7 +74,7 @@ export class FirstComponent implements OnInit {
 				pcfsystemfield33:3
 				})
 		})
-		const result = await res.json()
+		result = await res.json()
 		console.log(result);
 
     // result.data.Record.accountid
@@ -97,8 +122,8 @@ export class FirstComponent implements OnInit {
 	this.regFormGroup = this._fb.group({
 	nameCtrl: ['', Validators.required],
 	phoneCtrl: ['', Validators.required],
-	emailCtrl: ['', Validators.required],
-	needsCtrl: ['', Validators.required],
+	emailCtrl: ['', [Validators.required, Validators.email]],
+	needsCtrl: [''],
 		// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
 		// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
 	})

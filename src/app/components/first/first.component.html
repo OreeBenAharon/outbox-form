@@ -15,14 +15,20 @@
                 
                 <mat-form-field appearance="fill">
                     <input matInput class="form-input"  placeholder="שם מלא" formControlName="nameCtrl">
+                    <mat-error *ngIf="regFormGroup.controls.nameCtrl.invalid">נא להזין שם מלא.</mat-error>
+
                 </mat-form-field>
                 
                 <mat-form-field appearance="fill">
-                    <input matInput class="form-input"  placeholder="טלפון" formControlName="phoneCtrl">
+                    <input type="tel" matInput class="form-input" pattern="[0]{1}[0-9]{2}-[0-9]{7}"  placeholder="טלפון" formControlName="phoneCtrl">
+                    <mat-error *ngIf="regFormGroup.controls.phoneCtrl.invalid">נא להזין מספר טלפון.</mat-error>
+
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
-                    <input matInput  class="form-input"  placeholder="אימייל" formControlName="emailCtrl">
+                    <input matInput type="email"  class="form-input"  placeholder="דואר אלקטרוני" formControlName="emailCtrl">
+                    <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין כתובת דואר אלקטרוני תקינה.</mat-error>
+
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
@@ -30,12 +36,16 @@
                 </mat-form-field>
 
                 <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()">שליחה</button>
+                <mat-error *ngIf="regError.error">{{regError.msg}}</mat-error>
+
             </div>
         </form>
 
     </div>
 
-    <button mat-button (click)="openDialog()">Launch dialog</button>
+    <button
+      styles="display:none"
+      mat-button (click)="openDialog()">Launch dialog</button>
 
     <!-- <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="sendFirst()"> 
         <mat-form-field class="example-full-width"  appearance="fill">

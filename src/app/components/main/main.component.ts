@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { async, inject } from '@angular/core/testing';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 // import { FileValidator } from 'ngx-material-file-input';
@@ -18,13 +19,47 @@ export class MainComponent implements OnInit {
 	@Input()
 
 	public regFormGroup: FormGroup;
-	
+	public name:string = ""
+
     constructor(public _fb: FormBuilder,
 				public _ar: ActivatedRoute,
-				public _d: DataService) { }
+				public _d: DataService,
+				public dialog: MatDialog
+				) { }
   
 	// public id:string
 
+	public allEdu: string[] = [
+		"מוצר",
+		"תעשייתי",
+		"אופנה",
+		"תכשיטים",
+		"גראפי",
+		"אנימציה",
+		"פנים",
+		"אדריכל",
+		"מעצב נוף",
+		"מאייר",
+		"וידאו",
+		"אחר",
+		"טקסטיל",
+		"מוצרי ילדים",
+		"קרמיקה"
+	]
+
+	public allInsti: string[] = [
+		"בצלאל",
+		"שנקר",
+		"המכון הטכנלוגי",
+		"מנשר",
+		"ויצו",
+		"6b",
+		"אוניברסיטה אריאל",
+		"אבני",
+		"אוניברסיטת תל-אביב",
+		"הטכניון",
+		"אחר"
+	]
 	public getStatus = async ()=>{
 		try{            
 			let res = await fetch(`https://api.powerlink.co.il/api/record/1/${this._d.userId}`,{
@@ -36,7 +71,8 @@ export class MainComponent implements OnInit {
 			
 			let result = await res.json()
 			this._d.userStatus = result.data.Record.pcflastedit
-			console.log(result, this._d.userStatus);
+			this.name = result.data.Record.accountname
+			console.log(result, this._d.userStatus,this.name);
 			}
 
 		catch(err){
@@ -49,7 +85,7 @@ export class MainComponent implements OnInit {
 	}
 	
 	public startedFilling = async ()=>{
-		if ( this._d.userStatus < 25 && this._d.userStatus !== 0 ) {
+		if ( this._d.userStatus < 31 && this._d.userStatus !== 0 ) {
 			try{            
 				let res = await fetch(`https://api.powerlink.co.il/api/record/1/${this._d.userId}`,{
 				method: "PUT",
@@ -59,10 +95,10 @@ export class MainComponent implements OnInit {
 				},
 				body: JSON.stringify({
 					pcflastedit:Date.now(),
-					actionstatuscode:24
+					actionstatuscode:31
 					})
 				})
-				
+				this._d.userStatus = 31
 				let result = await res.json()
 				console.log(result);
 				}
@@ -85,7 +121,7 @@ export class MainComponent implements OnInit {
 				// accountname: this.regFormGroup?.controls.nameCtrl.value,
 				// telephone1: this.regFormGroup?.controls.phoneCtrl.value,
 				// emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
-				pcfsystemfield9: this.regFormGroup?.controls.phoneCtrl.value,
+				// pcfsystemfield9: this.regFormGroup?.controls.phoneCtrl.value,
 				pcfsystemfield25: this.regFormGroup?.controls.instiCtrl.value,
 				pcfsystemfield11: this.regFormGroup?.controls.eduCtrl.value,
 				pcfsystemfield31: this.regFormGroup?.controls.cNameCtrl.value,
@@ -96,7 +132,7 @@ export class MainComponent implements OnInit {
 				billingcity: this.regFormGroup?.controls.cityCtrl.value,
 				description: this.regFormGroup?.controls.infoCtrl.value,
 				pcfsystemfield33: this.regFormGroup?.controls.programCtrl.value,
-				actionstatuscode:26
+				actionstatuscode:33
 				})
 		})
 		
@@ -170,26 +206,54 @@ export class MainComponent implements OnInit {
 		return false
 	}
 
+	isFilled = ()=>{
+	  if (this.regFormGroup.controls.nameCtrl.valid &&
+		  this.regFormGroup.controls.phoneCtrl.valid &&
+		  this.regFormGroup.controls.emailCtrl.valid &&
+		  this.regFormGroup.controls.needsCtrl.valid) return true
+	  else return false
+	}
+
+   openDialog() {
+	  this.dialog.open(Popup);
+	  }
+
 	ngOnInit(): void {
 		this._d.userId = this._ar.snapshot.paramMap.get('id')
 		this.regFormGroup = this._fb.group({
 			nameCtrl: ['', Validators.required],
-			phoneCtrl: ['', Validators.required],
-			emailCtrl: ['', Validators.required],
+			streetCtrl: ['', Validators.required],
+			cityCtrl: ['', Validators.required],
+			// phoneCtrl: ['', Validators.required],
+			// emailCtrl: ['', Validators.required],
 			instiCtrl: ['', Validators.required],
 			eduCtrl: ['', Validators.required],
 			cNameCtrl: ['', Validators.required],
 			cDateCtrl: ['', Validators.required],
 			cSiteCtrl: ['', Validators.required],
 			cSocialCtrl: ['', Validators.required],
-			streetCtrl: ['', Validators.required],
-			cityCtrl: ['', Validators.required],
-			infoCtrl: ['', Validators.required],
-			programCtrl: ['', Validators.required],
+			infoCtrl: [''],
 			// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
 			// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
 		})
+		// this.regFormGroup.controls.nameCtrl.disable()
 		
 	}
 
+}
+
+
+///   ******POPUP********
+
+@Component({
+	selector: 'app-popup',
+	templateUrl: './popup.html',
+	styleUrls: ['./main.component.css']
+  })
+
+export class Popup {
+	goBack = ()=>{
+		window.location.href = 'http://new.designterminal.org.il';
+		// this._r.navigateByUrl("new.designterminal.org.il")
+		}
 }

@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { FirstComponent, Popup } from './components/first/first.component';
 import { EmailerComponent } from './components/emailer/emailer.component';
@@ -31,6 +32,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
+    MatSelectModule,
+
     // MaterialFileInputModule,
 
     // NgxMatFileInputModule,
