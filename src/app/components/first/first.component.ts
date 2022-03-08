@@ -92,6 +92,7 @@ export class FirstComponent implements OnInit {
 	}
 
 
+
   ngOnInit(): void {
 	this.regFormGroup = this._fb.group({
 	nameCtrl: ['', Validators.required],
@@ -107,19 +108,20 @@ export class FirstComponent implements OnInit {
 
 ///   ******POPUP********
 
+// import {Component} from '@angular/core';
+// import {MatDialog} from '@angular/material/dialog';
+
 @Component({
-	selector: 'popup',
-	templateUrl: 'popup.html',
+	selector: 'app-popup',
+	templateUrl: './popup.html',
+	styleUrls: ['./first.component.css']
   })
 
 export class Popup {
-
-	constructor(public _r:Router,
-				public dialog: MatDialog) { }
-  goBack = ()=>{
-	this._r.navigateByUrl("http://outbox.org.il")
-
-  }
+	goBack = ()=>{
+		window.location.href = 'http://new.designterminal.org.il';
+		// this._r.navigateByUrl("new.designterminal.org.il")
+		}
 }
 
 

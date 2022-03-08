@@ -8,12 +8,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-// import { MaterialFileInputModule } from 'ngx-material-file-input';
-// import {MatInputModule} from '@angular/material/input';
 import {MatInputModule} from '@angular/material/input';
-import { FirstComponent } from './components/first/first.component';
+import { FirstComponent, Popup } from './components/first/first.component';
 import { EmailerComponent } from './components/emailer/emailer.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -22,7 +20,9 @@ import { EmailerComponent } from './components/emailer/emailer.component';
     MainComponent,
     HeaderComponent,
     FirstComponent,
-    EmailerComponent
+    EmailerComponent,
+    Popup,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +30,7 @@ import { EmailerComponent } from './components/emailer/emailer.component';
     AppRoutingModule,
     MatInputModule,
     MatFormFieldModule,
+    MatDialogModule,
     // MaterialFileInputModule,
 
     // NgxMatFileInputModule,

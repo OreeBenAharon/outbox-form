@@ -6,7 +6,9 @@ import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   {path: "reg", component: FirstComponent},
+  {path: "", component: FirstComponent},
   {path: "final/:id", component: MainComponent},
+
   // {path: "", component: EmailerComponent},
   // {path: "**", pathMatch:"full", component: EmailerComponent}
 ];
