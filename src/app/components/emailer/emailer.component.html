@@ -1,1 +1,10 @@
+
 <p>emailer works!</p>
+<form  [formGroup]="reg0FormGroup" >
+    <mat-form-field appearance="outline">
+        <mat-label class="label">שם מלא</mat-label>
+        <input matInput class="form-input"  placeholder="שם מלא" formControlName="nameCtrl">
+        <!-- <mat-error *ngIf="!regFormGroup.controls.nameCtrl.valid">נא להזין שם מלא.</mat-error> -->
+
+    </mat-form-field>
+</form>

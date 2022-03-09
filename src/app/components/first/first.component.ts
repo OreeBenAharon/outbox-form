@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class FirstComponent implements OnInit {
 
-  public regFormGroup: FormGroup;
+  public reg1FormGroup: FormGroup;
   public regError:any = {error: false, msg:""}
   constructor(public _fb: FormBuilder,
               public _d: DataService,
@@ -20,16 +20,16 @@ export class FirstComponent implements OnInit {
 
 
   isFilled = ()=>{
-	if (this.regFormGroup.controls.nameCtrl.valid &&
-		this.regFormGroup.controls.phoneCtrl.valid &&
-		this.regFormGroup.controls.emailCtrl.valid &&
-		this.regFormGroup.controls.needsCtrl.valid) return true
+	if (this.reg1FormGroup.controls.nameCtrl.valid &&
+		this.reg1FormGroup.controls.phoneCtrl.valid &&
+		this.reg1FormGroup.controls.emailCtrl.valid &&
+		this.reg1FormGroup.controls.needsCtrl.valid) return true
 	else return false
   }
 
   sendFirst = async ()=> {
 		try{           
-		 
+		this.regError = {error: false, msg:""}
 		let res = await fetch('reg/exist',{
 			method: "POST",
 			headers:{
@@ -44,7 +44,7 @@ export class FirstComponent implements OnInit {
 					page_size: 500,
 					page_number: 1,
 					fields: "accountname,emailaddress1,telephone1",
-					query: `(emailaddress1 = ${this.regFormGroup?.controls.emailCtrl.value})`,
+					query: `(emailaddress1 = ${this.reg1FormGroup?.controls.emailCtrl.value})`,
 					sort_by: "accountname",
 					sort_type: "desc"
 			})
@@ -52,78 +52,108 @@ export class FirstComponent implements OnInit {
 		let result = await res.json()
 		console.log(result);
 		if (result.data.Data.length > 0) {
-			this.regError = {error: true, msg: " כבר קיים במערכת חשבון עם הדואר האלקטרוני שהוזן."}
+			this.regError = {error: true, msg: "כבר קיים במערכת חשבון עם הדואר האלקטרוני שהוזן."}
+			return
+		}
+
+		res = await fetch('reg/exist',{
+			method: "POST",
+			headers:{
+				"content-type": "application/json",
+				"Access-Control-Allow-Origin": "",
+				"Access-Control-Request-Method": "",
+				"Access-Control-Allow-Headers":"*",
+				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+			},
+			body: JSON.stringify({
+					objecttype: 1,
+					page_size: 500,
+					page_number: 1,
+					fields: "accountname,emailaddress1,telephone1",
+					query: `(telephone1 = ${this.reg1FormGroup?.controls.phoneCtrl.value})`,
+					sort_by: "accountname",
+					sort_type: "desc"
+			})
+		})
+
+		result = await res.json()
+		console.log(result);
+		if (result.data.Data.length > 0) {
+			this.regError = {error: true, msg: "כבר קיים במערכת חשבון עם מספר הטלפון שהוזן."}
+			return
 		}
 
 		 res = await fetch('reg/send',{
 		// let res = await fetch('https://api.powerlink.co.il/api/record/1',{
-		method: "POST",
-		headers:{
-			"content-type": "application/json",
-			"Access-Control-Allow-Origin": "",
-			"Access-Control-Request-Method": "",
-			"Access-Control-Allow-Headers":"*",
-			tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
-		},
-		body: JSON.stringify({
-				accountname: this.regFormGroup?.controls.nameCtrl.value,
-				telephone1: this.regFormGroup?.controls.phoneCtrl.value,
-				emailaddress1: this.regFormGroup?.controls.emailCtrl.value,
-				needs: this.regFormGroup?.controls.needsCtrl.value,
-				actionstatuscode:29,
-				pcfsystemfield33:3
-				})
-		})
+			method: "POST",
+			headers:{
+				"content-type": "application/json",
+				"Access-Control-Allow-Origin": "",
+				"Access-Control-Request-Method": "",
+				"Access-Control-Allow-Headers":"*",
+				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+			},
+			body: JSON.stringify({
+					accountname: this.reg1FormGroup?.controls.nameCtrl.value,
+					telephone1: this.reg1FormGroup?.controls.phoneCtrl.value.replace("-",""),
+					emailaddress1: this.reg1FormGroup?.controls.emailCtrl.value,
+					needs: this.reg1FormGroup?.controls.needsCtrl.value,
+					actionstatuscode:29,
+					pcfsystemfield33:3
+					})
+			})
 		result = await res.json()
 		console.log(result);
 
     // result.data.Record.accountid
 		res = await fetch('email',{
-		method: "POST",
-		headers:{
-				"content-type": "application/json",
-				// authorization: ""
-		},
-		body: JSON.stringify({
-				userId: result.data.Record.accountid,
-				name: this.regFormGroup?.controls.nameCtrl.value,
-				email: this.regFormGroup?.controls.emailCtrl.value,
-				phone: this.regFormGroup?.controls.phoneCtrl.value,
-				needs: this.regFormGroup?.controls.needsCtrl.value,
-				})
-		})
-		// const emailResults = await res.json()
-		// console.log(emailResults);
-		// console.log(emailResults.success);
+			method: "POST",
+			headers:{
+					"content-type": "application/json",
+			},
+			body: JSON.stringify({
+					userId: result.data.Record.accountid,
+					name: this.reg1FormGroup?.controls.nameCtrl.value,
+					email: this.reg1FormGroup?.controls.emailCtrl.value,
+					phone: this.reg1FormGroup?.controls.phoneCtrl.value,
+					needs: this.reg1FormGroup?.controls.needsCtrl.value,
+					})
+			})
+			// const emailResults = await res.json()
+			// console.log(emailResults);
+			// console.log(emailResults.success);
 
-		if( res.status === 200 ) {
-		// if( emailResults.status === 200 ) {
-			alert("yay! you're in!")
-		} else {
-			alert("oh no! registration has problems!")
+			if( res.status === 200 ) {
+			// if( emailResults.status === 200 ) {
+				this.openDialog()
+			} else {
+				this.regError = {error: true, msg: "בעייה בהרשמה"}
 
-		}
+			}
 
 	}
 	catch(err){
 			console.log(err);
-			alert("oh man! registration failed!")
-
+			this.regError = {error: true, msg: "בעייה בתהליך ההרשמה"}
 			}
 	}
 
-  openDialog() {
-	this.dialog.open(Popup);
+	public isValid(ctrl) {
+		return ctrl.valid
+	}
+
+  public openDialog() {
+		this.dialog.open(Popup);
 	}
 
 
 
   ngOnInit(): void {
-	this.regFormGroup = this._fb.group({
-	nameCtrl: ['', Validators.required],
-	phoneCtrl: ['', Validators.required],
-	emailCtrl: ['', [Validators.required, Validators.email]],
-	needsCtrl: [''],
+		this.reg1FormGroup = this._fb.group({
+		nameCtrl: ['', Validators.required],
+		phoneCtrl: ['', [Validators.required, Validators.pattern("^[0][5][0-9]{1}[-]{0,1}[0-9]{7}$")]],
+		emailCtrl: ['', [Validators.required, Validators.email]],
+		needsCtrl: [''],
 		// requiredfilePic: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]],
 		// requiredfile: [undefined,[Validators.required, FileValidator.maxContentSize(this.maxSize)]]
 	})

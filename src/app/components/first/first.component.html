@@ -10,34 +10,38 @@
 
     <div class="form-first">
         <p class="form-title">רוצים להמריא?? <span class="form-title-bolt">הירשמו כאן!</span></p>
-        <form  [formGroup]="regFormGroup" (ngSubmit)="sendFirst()">     
+        <form  [formGroup]="reg1FormGroup" (ngSubmit)="sendFirst()">     
             <div class="form-itself">
                 
+                <label class="label">שם מלא</label>
                 <mat-form-field appearance="fill">
-                    <input matInput class="form-input"  placeholder="שם מלא" formControlName="nameCtrl">
-                    <mat-error *ngIf="regFormGroup.controls.nameCtrl.invalid">נא להזין שם מלא.</mat-error>
+                    <input matInput class="form-input" formControlName="nameCtrl">
+                    <mat-error *ngIf="!reg1FormGroup.get('nameCtrl').valid">נא להזין שם מלא.</mat-error>
 
                 </mat-form-field>
                 
+                <mat-label class="label">טלפון</mat-label>
                 <mat-form-field appearance="fill">
-                    <input type="tel" matInput class="form-input" pattern="[0]{1}[0-9]{2}-[0-9]{7}"  placeholder="טלפון" formControlName="phoneCtrl">
-                    <mat-error *ngIf="regFormGroup.controls.phoneCtrl.invalid">נא להזין מספר טלפון.</mat-error>
+                    <input type="tel" matInput class="form-input"  formControlName="phoneCtrl">
+                    <mat-error *ngIf="!reg1FormGroup.get('phoneCtrl').valid">נא להזין מספר טלפון תקין.</mat-error>
 
                 </mat-form-field>
     
+                <mat-label class="label">דואר אלקטרוני</mat-label>
                 <mat-form-field appearance="fill">
-                    <input matInput type="email"  class="form-input"  placeholder="דואר אלקטרוני" formControlName="emailCtrl">
-                    <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין כתובת דואר אלקטרוני תקינה.</mat-error>
+                    <input matInput type="email"  class="form-input"   formControlName="emailCtrl">
+                    <mat-error *ngIf="!reg1FormGroup.get('emailCtrl').valid">נא להזין כתובת דואר אלקטרוני תקינה.</mat-error>
 
                 </mat-form-field>
     
+                <mat-label class="label">כמה מילים עליך וכיצד נוכל לעזור?</mat-label>
                 <mat-form-field appearance="fill">
                     <textarea matInput class="form-input" placeholder="כמה מילים עליך וכיצד נוכל לעזור?" formControlName="needsCtrl"></textarea>
                 </mat-form-field>
 
                 <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()">שליחה</button>
                 <mat-error *ngIf="regError.error">{{regError.msg}}</mat-error>
-
+                
             </div>
         </form>
 
@@ -47,21 +51,5 @@
       styles="display:none"
       mat-button (click)="openDialog()">Launch dialog</button>
 
-    <!-- <form class="example-form" [formGroup]="regFormGroup" (ngSubmit)="sendFirst()"> 
-        <mat-form-field class="example-full-width"  appearance="fill">
-          <mat-label>NAME:</mat-label>
-          <input matInput placeholder="ישראל ישראלי" value="avi" formControlName="nameCtrl">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>PHONE:</mat-label>
-          <input matInput placeholder="050-......." value="Sushi" formControlName="phoneCtrl">
-        </mat-form-field>
-      
-        <mat-form-field class="example-full-width"  appearance="fill">
-          <mat-label>EMAIL:</mat-label>
-          <textarea matInput formControlName="emailCtrl" placeholder="avi@gmail.com"></textarea>
-        </mat-form-field>
-        <button type="submit">SEND</button>
-      </form> -->
 </div>
+

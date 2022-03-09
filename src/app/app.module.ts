@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import { FirstComponent, Popup } from './components/first/first.component';
 import { EmailerComponent } from './components/emailer/emailer.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RegFirstComponent } from './reg-first/reg-first.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FirstComponent,
     EmailerComponent,
     Popup,
+    RegFirstComponent,
 
   ],
   imports: [

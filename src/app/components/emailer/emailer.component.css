@@ -1,0 +1,29 @@
+body, form, mat-input{
+ background-color: blue;
+}
+
+mat-input{
+    stroke: 50px darkgreen solid !important;
+}
+
+.label{
+    text-align: right;
+    direction: rtl;
+}
+::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    background-color: rgb(84, 0, 77) !important;
+    color: rgb(0, 236, 43) !important
+  }
+  
+  ::ng-deep .mat-form-field-empty.mat-form-field-label {
+      color: rgb(100, 103, 32);
+  }
+
+  ::ng-deep .mat-form-field-label .ng-star-inserted .mat-empty .mat-form-field-empty {
+      color: rgb(240, 250, 55);
+  }
+
+  .mat-focused .placeholder {
+    color: #dda36d;
+    stroke: 50px rgb(0, 247, 251) solid;
+}

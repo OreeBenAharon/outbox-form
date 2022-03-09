@@ -8,6 +8,8 @@ const routes: Routes = [
   {path: "reg", component: FirstComponent},
   {path: "", component: FirstComponent},
   {path: "final/:id", component: MainComponent},
+  {path: "test", component: EmailerComponent},
+
 
   // {path: "", component: EmailerComponent},
   // {path: "**", pathMatch:"full", component: EmailerComponent}

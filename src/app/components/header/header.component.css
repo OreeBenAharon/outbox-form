@@ -1,3 +1,60 @@
-.header{
-    height: 120px;
+.header {
+    background: #000;
+    height: 30vh;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .cover,
+  .logo {
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 30vh;
+  }
+
+/* Screen max-width: 640 */
+@media only screen and (max-width: 640px) {
+    .header {
+        height: 50vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    
+    .cover {
+        grid-area: 2;
+        width: 50vw;
+        height: auto;
+    }
+    
+    .logo {
+        grid-area: 1;
+        width: 22vw;
+        height: auto;
+    }
+}
+    
+    /* Screen max-width: 480 */
+@media only screen and (max-width: 480px) {
+    .header {
+        height: 40vh;
+    }
+}
+    /* Screen max-width: 375 */
+@media only screen and (max-width: 375px) {
+    .header {
+        height: 30vh;
+    }
+}
+    /* Screen max-width: 330 */
+@media only screen and (max-width: 330px) {
+    .header {
+        height: 25vh;
+    }
+}
+    /* Screen max-width: 280 */
+@media only screen and (max-width: 280px) {
+    .header {
+        height: 22vh;
+    }
 }
