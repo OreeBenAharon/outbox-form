@@ -31,6 +31,7 @@ export class FirstComponent implements OnInit {
   sendFirst = async ()=> {
 		try{           
 		this.regError = {error: false, msg:""}
+		this.sendingProgress = true
 		let res = await fetch('reg/exist',{
 			method: "POST",
 			headers:{
@@ -54,6 +55,7 @@ export class FirstComponent implements OnInit {
 		console.log(result);
 		if (result.data.Data.length > 0) {
 			this.regError = {error: true, msg: "כבר קיים במערכת חשבון עם הדואר האלקטרוני שהוזן."}
+			this.sendingProgress = false
 			return
 		}
 
@@ -81,6 +83,7 @@ export class FirstComponent implements OnInit {
 		console.log(result);
 		if (result.data.Data.length > 0) {
 			this.regError = {error: true, msg: "כבר קיים במערכת חשבון עם מספר הטלפון שהוזן."}
+			this.sendingProgress = false
 			return
 		}
 
@@ -126,8 +129,10 @@ export class FirstComponent implements OnInit {
 
 			if( res.status === 200 ) {
 			// if( emailResults.status === 200 ) {
+				this.sendingProgress = false
 				this.openDialog()
 			} else {
+				this.sendingProgress = false
 				this.regError = {error: true, msg: "בעייה בהרשמה"}
 
 			}
@@ -135,6 +140,7 @@ export class FirstComponent implements OnInit {
 	}
 	catch(err){
 			console.log(err);
+			this.sendingProgress = false
 			this.regError = {error: true, msg: "בעייה בתהליך ההרשמה"}
 			}
 	}

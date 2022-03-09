@@ -8,9 +8,6 @@
     height: 50%;
   }
   
-  .footer{
-      height: 5vh;
-  }
   .title-text {
     display: flex;
     flex-direction: column;
@@ -198,6 +195,8 @@
   
     .form-input {
       font-size: 1rem;
+      height: 7vh;
+      font-size: 1.8rem;
     }
   }
   
@@ -294,6 +293,10 @@
     .form-title {
       max-width: 50vw;
       line-height: 1.05;
+    }
+    .form-input {
+      height: 5vh;
+      font-size: 1.5rem;
     }
   }
   
