@@ -113,6 +113,11 @@
         color: #074b72;
   }
 
+  mat-error{
+      font-size: medium;
+      font-family: Heebo;
+  }
+
   .form-input,
   .btn-send {
     border: 2px solid #074b72;
