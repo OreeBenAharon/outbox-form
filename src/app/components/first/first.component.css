@@ -1,4 +1,18 @@
-.first-container {
+.header {
+    background: #000;
+    height: 30vh;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .cover,
+  .logo {
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 30vh;
+  }
+  
+  .first-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +38,6 @@
     font-weight: bold;
     font-size: 42px;
     font-size: 1.5rem;
-    /* line-height: 22px; */
     line-height: 1.5;
     text-align: right;
     margin-top: 30px 0;
@@ -39,7 +52,6 @@
     font-size: 1rem;
     font-size: 27px;
     line-height: 1.1;
-  
   }
   
   .text-premail {
@@ -49,7 +61,6 @@
     font-size: 0.8rem;
     font-size: 22px;
     line-height: 1.5;
-  
     color: #074b72;
     margin-top: -5px;
   }
@@ -94,30 +105,14 @@
     margin-top: 1vh;
     width: 100%;
   }
+
   .mat-input-element {
-    /* background-color: #700000 !important; */
-    /* color: rgb(40, 29, 197) !important; */
     color: #074b72 !important;
   }
   .mat-form-field-label-wrapper {
-    /* color: rgb(48, 48, 48) !important; */
     color: #074b72 !important;
   }
   
-  mat-label, .label{
-      text-align: start;
-        font-family: Heebo;
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: -20px;
-        color: #074b72;
-  }
-
-  mat-error{
-      font-size: medium;
-      font-family: Heebo;
-  }
-
   .form-input,
   .btn-send {
     border: 2px solid #074b72;
@@ -179,6 +174,7 @@
     font-size: medium;
   }
   
+
   /* Screen max-width: 1024 */
   @media only screen and (max-width: 1024px) {
     .title-text {
@@ -374,4 +370,18 @@
     .form-first {
       height: 150vh;
     }
+  }
+  
+  mat-label, .label{
+      text-align: start;
+        font-family: Heebo;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: -20px;
+        color: #074b72;
+  }
+
+  mat-error{
+      font-size: medium;
+      font-family: Heebo;
   }

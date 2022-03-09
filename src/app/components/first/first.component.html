@@ -9,7 +9,7 @@
     </div>
 
     <div class="form-first">
-        <p class="form-title">רוצים להמריא?? <span class="form-title-bolt">הירשמו כאן!</span></p>
+        <p class="form-title">רוצים להמריא? <span class="form-title-bolt">הירשמו כאן!</span></p>
         <form  [formGroup]="reg1FormGroup" (ngSubmit)="sendFirst()">     
             <div class="form-itself">
                 
@@ -20,7 +20,7 @@
 
                 </mat-form-field>
                 
-                <mat-label class="label">טלפון</mat-label>
+                <mat-label class="label">טלפון נייד</mat-label>
                 <mat-form-field appearance="fill">
                     <input type="tel" matInput class="form-input"  formControlName="phoneCtrl">
                     <mat-error *ngIf="!reg1FormGroup.get('phoneCtrl').valid">נא להזין מספר טלפון תקין.</mat-error>

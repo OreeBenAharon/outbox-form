@@ -3,58 +3,88 @@
     height: 30vh;
     justify-content: center;
     text-align: center;
+    overflow: visible;
   }
   
   .cover,
   .logo {
     -o-object-fit: cover;
     object-fit: cover;
-    height: 30vh;
+    max-height: 100%;
+    max-width: 100%;
   }
-
-/* Screen max-width: 640 */
-@media only screen and (max-width: 640px) {
-    .header {
-        height: 50vh;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-    
-    .cover {
-        grid-area: 2;
-        width: 50vw;
-        height: auto;
-    }
-    
+  
+  /* Screen max-width: 640 */
+  @media only screen and (max-width: 640px) {
+    .cover,
     .logo {
-        grid-area: 1;
-        width: 22vw;
-        height: auto;
+      height: 100%;
     }
-}
-    
-    /* Screen max-width: 480 */
-@media only screen and (max-width: 480px) {
+  }
+  
+  /* Screen max-width: 575 */
+  @media only screen and (max-width: 575px) {
     .header {
-        height: 40vh;
+      height: 28vh;
     }
-}
-    /* Screen max-width: 375 */
-@media only screen and (max-width: 375px) {
+  }
+  
+  /* Screen max-width: 535 */
+  @media only screen and (max-width: 535px) {
     .header {
-        height: 30vh;
+      height: 26vh;
     }
-}
-    /* Screen max-width: 330 */
-@media only screen and (max-width: 330px) {
+  }
+  
+  /* Screen max-width: 500 */
+  @media only screen and (max-width: 500px) {
     .header {
-        height: 25vh;
+      height: 22vh;
     }
-}
-    /* Screen max-width: 280 */
-@media only screen and (max-width: 280px) {
+  }
+  
+  /* Screen max-width: 420 */
+  @media only screen and (max-width: 420px) {
     .header {
-        height: 22vh;
+      height: 19vh;
     }
-}
+  }
+  /* Screen max-width: 375 */
+  @media only screen and (max-width: 375px) {
+    .header {
+      height: 18vh;
+    }
+  }
+  /* Screen max-width: 345 */
+  @media only screen and (max-width: 345px) {
+    .header {
+      height: 15vh;
+    }
+  }
+  /* Screen max-width: 298 */
+  @media only screen and (max-width: 298px) {
+    .header {
+      height: 13vh;
+    }
+  }
+  
+  /* Screen max-width: 250 */
+  @media only screen and (max-width: 250px) {
+    .header {
+      height: 10vh;
+    }
+  }
+  
+  /* Screen max-width: 190 */
+  @media only screen and (max-width: 190px) {
+    .header {
+      height: 8vh;
+    }
+  }
+  
+  /* Screen max-width: 155 */
+  @media only screen and (max-width: 155px) {
+    .header {
+      height: 4vh;
+    }
+  }
