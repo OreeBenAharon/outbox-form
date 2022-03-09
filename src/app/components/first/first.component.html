@@ -39,7 +39,9 @@
                     <textarea matInput class="form-input" placeholder="כמה מילים עליך וכיצד נוכל לעזור?" formControlName="needsCtrl"></textarea>
                 </mat-form-field>
 
-                <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()">שליחה</button>
+                <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()">
+                    <span>{{sendingProgress? "שולח..." : "שליחת הטופס"}}</span>
+                </button>
                 <mat-error *ngIf="regError.error">{{regError.msg}}</mat-error>
                 
             </div>
@@ -48,8 +50,11 @@
     </div>
 
     <button
-      styles="display:none"
+      style="display:none"
       mat-button (click)="openDialog()">Launch dialog</button>
 
 </div>
 
+<div class="footer">
+    
+</div>

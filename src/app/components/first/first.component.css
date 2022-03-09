@@ -1,26 +1,16 @@
-.header {
-    background: #000;
-    height: 30vh;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .cover,
-  .logo {
-    -o-object-fit: cover;
-    object-fit: cover;
-    height: 30vh;
-  }
-  
-  .first-container {
+.first-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     direction: rtl;
     text-align: center;
+    height: 50%;
   }
   
+  .footer{
+      height: 5vh;
+  }
   .title-text {
     display: flex;
     flex-direction: column;
@@ -38,6 +28,7 @@
     font-weight: bold;
     font-size: 42px;
     font-size: 1.5rem;
+    /* line-height: 22px; */
     line-height: 1.5;
     text-align: right;
     margin-top: 30px 0;
@@ -61,6 +52,7 @@
     font-size: 0.8rem;
     font-size: 22px;
     line-height: 1.5;
+  
     color: #074b72;
     margin-top: -5px;
   }
@@ -75,7 +67,8 @@
     justify-content: flex-start;
     align-items: center;
     width: 90vw;
-    height: 110vh;
+    /* height: 70%; */
+    /* height: 110vh; */
     margin-top: 40px;
   }
   
@@ -105,12 +98,29 @@
     margin-top: 1vh;
     width: 100%;
   }
-
   .mat-input-element {
+    /* background-color: #700000 !important; */
+    /* color: rgb(40, 29, 197) !important; */
     color: #074b72 !important;
   }
   .mat-form-field-label-wrapper {
+    /* color: rgb(48, 48, 48) !important; */
     color: #074b72 !important;
+  }
+  
+  mat-label,
+  .label {
+    text-align: start;
+    font-family: Heebo;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: -20px;
+    color: #074b72;
+  }
+  
+  mat-error {
+    font-size: medium;
+    font-family: Heebo;
   }
   
   .form-input,
@@ -145,7 +155,7 @@
     cursor: pointer;
     text-align: center;
   }
-    
+  
   .popup > * {
     display: flex;
     justify-content: center;
@@ -174,7 +184,6 @@
     font-size: medium;
   }
   
-
   /* Screen max-width: 1024 */
   @media only screen and (max-width: 1024px) {
     .title-text {
@@ -185,10 +194,6 @@
     .btn-send {
       width: 70vw;
       height: 10vh;
-    }
-  
-    .form-first {
-      height: 115vh;
     }
   
     .form-input {
@@ -214,9 +219,8 @@
     }
   
     .form-first {
-      background-color: #8f8f8f;
+      /* background-color: #8f8f8f; */
       width: 100vw;
-      height: 130vh;
     }
   
     .form-title {
@@ -258,13 +262,6 @@
   
   /* Screen max-width: 640 */
   @media only screen and (max-width: 640px) {
-    .header {
-      height: 50vh;
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;
-    }
-  
     .cover {
       grid-area: 2;
       width: 50vw;
@@ -298,19 +295,11 @@
       max-width: 50vw;
       line-height: 1.05;
     }
-  
-    .form-first {
-      height: 135vh;
-    }
   }
   
   /* Screen max-width: 480 */
   
   @media only screen and (max-width: 480px) {
-    .header {
-      height: 40vh;
-    }
-  
     .title-text {
       line-height: 1.1;
     }
@@ -351,37 +340,21 @@
   }
   
   /* Screen max-width: 330 */
-  @media only screen and (max-width: 330px) {
+  /* @media only screen and (max-width: 330px) {
     .header {
       height: 25vh;
     }
-  
     .form-first {
       height: 142vh;
     }
-  }
+  } */
   
   /* Screen max-width: 280 */
-  @media only screen and (max-width: 280px) {
+  /* @media only screen and (max-width: 280px) {
     .header {
       height: 22vh;
     }
-  
     .form-first {
       height: 150vh;
     }
-  }
-  
-  mat-label, .label{
-      text-align: start;
-        font-family: Heebo;
-        font-weight: 600;
-        font-size: 1.2rem;
-        margin-bottom: -20px;
-        color: #074b72;
-  }
-
-  mat-error{
-      font-size: medium;
-      font-family: Heebo;
-  }
+  } */
