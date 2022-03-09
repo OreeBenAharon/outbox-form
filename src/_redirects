@@ -2,4 +2,5 @@
 /reg/exist https://api.powerlink.co.il/api/query 200
 /email https://outbox-emailer.herokuapp.com/send 200
 /fb https://connect.facebook.net/en_US/fbevents.js 200
+/pixel https://www.facebook.com/tr?id=426251634193503&ev=lead&noscript=1 200
 /*  /index.html 200

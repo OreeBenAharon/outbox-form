@@ -5,13 +5,18 @@
     align-items: center;
     direction: rtl;
     text-align: center;
-    height: 50%;
+    height: 25%;
   }
   
+.footer{
+    height: 5vh;
+}
+
+
   .title-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.5;
+    line-height: 1.15;
     background-color: #ffffff;
     border-right: 1vw solid #074b72;
     margin-top: 20px;
@@ -23,10 +28,10 @@
     font-family: "Heebo";
     font-style: normal;
     font-weight: bold;
-    font-size: 42px;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    font-size: 20px;
     /* line-height: 22px; */
-    line-height: 1.5;
+    line-height: 1.15;
     text-align: right;
     margin-top: 30px 0;
     color: #ad2702;
@@ -38,8 +43,8 @@
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
-    font-size: 27px;
-    line-height: 1.1;
+    font-size: 16px;
+    line-height: 1.15;
   }
   
   .text-premail {
@@ -47,8 +52,8 @@
     font-style: normal;
     font-weight: normal;
     font-size: 0.8rem;
-    font-size: 22px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.15;
   
     color: #074b72;
     margin-top: -5px;
@@ -74,7 +79,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 1.7rem;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     color: #074b72;
     margin-top: 3vh;
@@ -84,7 +89,7 @@
     font-family: "Heebo";
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 25px;
     text-align: center;
     color: #074b72;
   }
