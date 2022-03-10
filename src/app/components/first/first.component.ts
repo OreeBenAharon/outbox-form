@@ -95,8 +95,8 @@ export class FirstComponent implements OnInit {
 				"Access-Control-Allow-Origin": "",
 				"Access-Control-Request-Method": "",
 				"Access-Control-Allow-Headers":"*",
-				tokenID: process.env.token
-				// tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
+				// tokenID: process.env.token
+				tokenID:"df77e5c4-c80c-466f-aab5-70fe3b80e113"
 			},
 			body: JSON.stringify({
 					accountname: this.reg1FormGroup?.controls.nameCtrl.value,
