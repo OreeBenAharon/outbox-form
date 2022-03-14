@@ -14,6 +14,10 @@ import { FirstComponent, Popup } from './components/first/first.component';
 import { EmailerComponent } from './components/emailer/emailer.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegFirstComponent } from './reg-first/reg-first.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -35,6 +39,10 @@ import { RegFirstComponent } from './reg-first/reg-first.component';
     MatFormFieldModule,
     MatDialogModule,
     MatSelectModule,
+    MatProgressBarModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
 
     // MaterialFileInputModule,
 

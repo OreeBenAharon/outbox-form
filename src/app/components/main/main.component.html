@@ -1,90 +1,146 @@
 <div class="main">
     <div class="form-container">
-        <div class="form-first">
-            <p class="form-title">מעצב/ת יקר/ה, אנו שמחים שבחרת להגיש מועמדות לתוכנית החממה של עמותת "לצאת מהקופסא" </p>
-            <form  [formGroup]="regFormGroup" (ngSubmit)="sendFinal()">     
+        <div class="form-main">
+            <div class="form-title"><p class="title"> מעצב/ת יקר/ה,</p>
+                <p>אנו שמחים שבחרת להגיש מועמדות לתוכנית החממה של עמותת "לצאת מהקופסא" </p>
+            </div>
+            <form  [formGroup]="regFormGroup" >     
                 <div class="form-itself">
                     
+                    <mat-label class="label">שם מלא</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput class="form-input" [disabled]="true" placeholder="שם מלא" #name formControlName="nameCtrl">
+                        <input matInput class="form-input"  [value]="this.name" #name formControlName="nameCtrl">
                     </mat-form-field>
                     
+                    <mat-label class="label">עיר</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput class="form-input"  placeholder="עיר" #city formControlName="cityCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין עיר מגורים.</mat-error>
+                        <input matInput class="form-input"  #city formControlName="cityCtrl">
+                        <mat-error *ngIf="regFormGroup.get('cityCtrl').invalid">נא להזין עיר מגורים.</mat-error>
+                    </mat-form-field>
 
+                    <mat-label class="label">כתובת למשלוח דואר</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput  class="form-input" #street formControlName="streetCtrl">
+                        <mat-error *ngIf="regFormGroup.get('streetCtrl').invalid">נא להזין כתובת.</mat-error>
                     </mat-form-field>
         
-                    <mat-form-field appearance="outline">
-                        <input matInput  class="form-input"  placeholder="כתובת למשלוח דואר" #street formControlName="streetCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין כתובת.</mat-error>
 
-                    </mat-form-field>
-        
-
+                    <mat-label class="label">הכשרה</mat-label>
                     <mat-form-field appearance="outline">
-                        <mat-label>הכשרה</mat-label>
                         <mat-select formControlName="eduCtrl">
                             <mat-option *ngFor="let edu of allEdu, index as i" [value]=i+1>
                             {{edu}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא לבחור את ההכשרה שלכם.</mat-error>
-
+                        <mat-error *ngIf="regFormGroup.get('eduCtrl').invalid">נא לבחור את ההכשרה שלכם.</mat-error>
                     </mat-form-field>
 
+                    <mat-label class="label">מוסד לימודים</mat-label>
                     <mat-form-field appearance="outline">
-                        <mat-label>מוסד לימודים</mat-label>
                         <mat-select formControlName="instiCtrl">
                             <mat-option *ngFor="let insti of allInsti, index as i" [value]=i+1>
                             {{insti}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא לבחור את מוסד הלימודים בו למדתם.</mat-error>
-
+                        <mat-error *ngIf="regFormGroup.get('instiCtrl').invalid">נא לבחור את מוסד הלימודים בו למדתם.</mat-error>
                     </mat-form-field>
 
+                    <mat-label class="label">שם העסק/סטודיו</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput  class="form-input"  placeholder="שם העסק/סטודיו" #cname formControlName="cNameCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין את שם העסק או הסטודיו שלכם.</mat-error>
-
+                        <input matInput class="form-input" formControlName="cNameCtrl">
+                        <mat-error *ngIf="regFormGroup.get('cNameCtrl').invalid">נא להזין את שם העסק או הסטודיו שלכם.</mat-error>
                     </mat-form-field>
                     
-                    <mat-form-field appearance="outline">
-                        <input matInput  class="form-input"  placeholder="תאריך פתיחת עסק/סטודיו" #cdate formControlName="cDateCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין את תאריך פתיחת העסק או הסטודיו שלכם.</mat-error>
+                    <mat-label class="label">תאריך פתיחת עסק/סטודיו</mat-label>
+                    <mat-form-field appearance="fill">
+                        <input matInput [matDatepicker]="picker" formControlName="cDateCtrl" (change)="log(picker)">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="regFormGroup.get('cDateCtrl').invalid">נא להזין את תאריך פתיחת העסק או הסטודיו שלכם.</mat-error>
+                      </mat-form-field>
 
+                    <!-- <mat-form-field appearance="outline">
+                        <input matInput  class="form-input" #cdate >
+                    </mat-form-field> -->
+
+                    <mat-label class="label">אתר העסק/סטודיו</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input matInput  class="form-input" formControlName="cSiteCtrl">
+                        <mat-error *ngIf="regFormGroup.get('cSiteCtrl').invalid">נא להזין את אתר העסק או הסטודיו שלכם.</mat-error>
                     </mat-form-field>
 
+                    <mat-label class="label">רשת חברתית</mat-label>
                     <mat-form-field appearance="outline">
-                        <input matInput  class="form-input"  placeholder="אתר העסק/סטודיו" #csite formControlName="cSiteCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין את אתר העסק או הסטודיו שלכם.</mat-error>
-
+                        <input matInput class="form-input" formControlName="cSocialCtrl">
+                        <mat-error *ngIf="regFormGroup.get('cSocialCtrl').invalid">נא להזין את חשבון הרשת החברתית שלכם.</mat-error>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline">
-                        <input matInput  class="form-input"  placeholder="רשת חברתית" #csocial formControlName="cSocialCtrl">
-                        <mat-error *ngIf="regFormGroup.controls.cityCtrl.invalid">נא להזין את חשבון הרשת החברתית שלכם.</mat-error>
+            <!-- <input type="file" class="filetaker" name="filetaker">
+            <input type="file" class="pictaker" name="pictaker">
+            <button class="sendfile" (click)="sendfile()">שליחה</button>
+            <button type="submit">שליחת טופס</button> -->
 
-                    </mat-form-field>
 
+            <input type="file" class=" filetaker" id="filetaker"
+                (change)="onFileSelected($event,'creere')" #fileUploadCareer>
+     
+            <div class="file-upload">
+            
+                {{fileNameCreere || ".לא נבחר תיק עבודות"}}
+            
+                <button mat-mini-fab color="primary" class="upload-btn"
+                (click)="fileUploadCareer.click()">
+                    <mat-icon>attach_file</mat-icon>
+            
+                </button>
+            
+            </div>
+
+            <input type="file" class=" pictaker" id="pictaker"
+                (change)="onFileSelected($event,'pic')" #fileUploadPic>
+     
+            <div class="file-upload">
+            
+                {{fileNamePic || ".לא נבחרה תמונה אישית"}}
+            
+                <button mat-mini-fab color="primary" class="upload-btn"
+                (click)="fileUploadPic.click()">
+                    <mat-icon>attach_file</mat-icon>
+            
+                </button>
+            
+            </div>
+            
+            <!-- <div class="progress">
+            
+            <mat-progress-bar class="progress-bar" mode="determinate"
+                                [value]="uploadProgress" *ngIf="uploadProgress">
+            
+            </mat-progress-bar>
+            
+            <mat-icon class="cancel-upload" (click)="cancelUpload()" 
+                        *ngIf="uploadProgress">delete_forever</mat-icon>
+            
+            </div> -->
+
+
+
+
+
+
+                    <mat-label class="label">משהו נוסף שכדאי שנדע</mat-label>
                     <mat-form-field appearance="outline">
-                        <textarea matInput class="form-input" placeholder="משהו נוסף שכדאי שנדע" #cinfo formControlName="infoCtrl"></textarea>
+                        <textarea matInput class="form-input" #cinfo formControlName="infoCtrl"></textarea>
                     </mat-form-field>
-    
-                    <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()">שליחה</button>
+                    <button mat-stroked-button type="submit" class="btn-send" [disabled]="!isFilled()" (click)="sendFinal()">שליחה</button>
                 </div>
             </form>
     
         </div>
     
-        <button mat-button (click)="openDialog()">Launch dialog</button>
+        <button mat-button class="none" style="display:none" (click)="openDialog()">Launch dialog</button>
 
-
-        <input type="file" class="filetaker" name="filetaker">
-        <input type="file" class="pictaker" name="pictaker">
-        <button class="sendfile" (click)="sendfile()" >שליחה</button>
-        <button type="submit">שליחת טופס</button>
+  
 <!--          
     <mat-form-field>
         <ngx-mat-file-input formControlName="requiredfilePicCtrl" placeholder="Required input" valuePlaceholder="לא נבחר קובץ" required></ngx-mat-file-input>
@@ -110,4 +166,8 @@
       </mat-form-field> -->
   
     </div>
+    
 </div>
+
+<div class="footer"></div>    
+

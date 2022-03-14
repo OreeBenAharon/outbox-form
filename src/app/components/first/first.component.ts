@@ -13,7 +13,7 @@ export class FirstComponent implements OnInit {
 
   public reg1FormGroup: FormGroup;
   public regError:any = {error: false, msg:""}
-	public sendingProgress:boolean = false
+  public sendingProgress:boolean = false
   constructor(public _fb: FormBuilder,
               public _d: DataService,
 			  public _r:Router,
